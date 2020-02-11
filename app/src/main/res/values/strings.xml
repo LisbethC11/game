@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Heads Up Display Game</string>
-    <string name="botonnn">Boton</string>
+    <string name="app_name" translatable="false">Heads Up Display Game</string>
+    <string name="botonnn" translatable="false">Boton</string>
 </resources>
