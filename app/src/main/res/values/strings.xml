@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name" translatable="false">Heads Up Display Game</string>
     <string name="botonnn" translatable="false">Boton</string>
+    <string name="tema" translatable="false">Seleccione la categoria que desea.</string>
+    <string name="historia" translatable="false">Historia</string>
+    <string name="literatura" translatable="false">Literatura</string>
+    <string name="deporte" translatable="false">Deporte</string>
+    <string name="tecnologia" translatable="false">Tecnologia</string>
+    <string name="farandula" translatable="false">Farandula</string>
+    <string name="Psicologia" translatable="false">Psicologia</string>
+    <string name="Matematica" translatable="false">Matematica</string>
+    <string name="logica" translatable="false">Logica</string>
 </resources>
