@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void llamar(View view){
-        Intent i = new Intent (this, MainActivity.class);
+        Intent i = new Intent (this, quizz.class);
         startActivity(i);
     }
 }
