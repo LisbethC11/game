@@ -21,7 +21,7 @@ public class splash extends AppCompatActivity {
 
         new Handler().postDelayed(new Runnable() {
             public void run() {
-                Intent intent = new Intent(splash.this, MainActivity.class);
+                Intent intent = new Intent(splash.this, quizz.class);
                 startActivity(intent);
                 finish();
             }

@@ -1,125 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
+    android:background="#03A9F4"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        style="@style/tema"
-        android:layout_width="385dp"
-        android:layout_height="95dp"
-        android:text="@string/tema" />
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <RadioButton
-            android:id="@+id/radioButton2"
-            style="@style/segundo"
-            android:layout_width="177dp"
-            android:layout_height="72dp"
-            android:padding="10dp"
-            android:text="@string/historia" />
-
-        <RadioButton
-            android:id="@+id/radioButton"
-            style="@style/segundo"
-            android:layout_width="230dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="10dp"
-            android:text="@string/literatura" />
+            android:orientation="vertical">
 
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="374dp"
+                android:layout_height="259dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="28dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+                <ImageButton
+                    android:id="@+id/image1"
+                    android:layout_width="157dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/leyenda"
+                    android:onClick="llamar" />
 
-        <RadioButton
-            android:id="@+id/radioButton3"
-            style="@style/segundo"
-            android:layout_width="177dp"
-            android:layout_height="96dp"
-            android:padding="10dp"
-            android:text="@string/deporte" />
+                <ImageButton
+                    android:layout_width="144dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/estrella"
+                    android:onClick="llamar" />
 
-        <RadioButton
-            android:id="@+id/radioButton4"
-            style="@style/segundo"
-            android:layout_width="230dp"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:text="@string/tecnologia" />
+            </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="397dp"
+                android:layout_height="267dp"
+                android:layout_marginTop="36dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-    </LinearLayout>
+                <ImageButton
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/musica" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+                <ImageButton
+                    android:layout_width="149dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/actuacion" />
 
-        <RadioButton
-            android:id="@+id/radioButton5"
-            style="@style/segundo"
-            android:layout_width="177dp"
-            android:layout_height="103dp"
-            android:padding="10dp"
-            android:text="@string/farandula" />
+            </LinearLayout>
 
-        <RadioButton
-            android:id="@+id/radioButton6"
-            style="@style/segundo"
-            android:layout_width="230dp"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:text="@string/Psicologia" />
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="388dp"
+                android:layout_height="268dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="40dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
+                <ImageButton
+                    android:layout_width="141dp"
+                    android:layout_height="231dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/animales" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/radioButton7"
-            style="@style/segundo"
-            android:layout_width="177dp"
-            android:layout_height="90dp"
-            android:padding="10dp"
-            android:text="@string/logica" />
-
-        <RadioButton
-            android:id="@+id/radioButton8"
-            style="@style/segundo"
-            android:layout_width="230dp"
-            android:layout_height="132dp"
-            android:padding="10dp"
-            android:text="@string/Matematica" />
-
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/button"
-        style="@style/segundo"
-        android:layout_width="200dp"
-        android:layout_height="66dp"
-        android:layout_gravity="center"
-
-        android:onClick="llamar"
-        android:padding="10dp"
-        android:text="Iniciar Quiz" />
-
-
-</LinearLayout>
+                <ImageButton
+                    android:layout_width="146dp"
+                    android:layout_height="231dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/mundo" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
