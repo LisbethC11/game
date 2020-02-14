@@ -63,11 +63,13 @@
                     android:layout_width="150dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
+                    android:onClick="llamar"
                     android:background="@drawable/musica" />
 
                 <ImageButton
                     android:layout_width="149dp"
                     android:layout_height="wrap_content"
+                    android:onClick="llamar"
                     android:layout_marginLeft="20dp"
                     android:background="@drawable/actuacion" />
 
@@ -88,11 +90,13 @@
                     android:layout_width="141dp"
                     android:layout_height="231dp"
                     android:layout_marginLeft="20dp"
+                    android:onClick="llamar"
                     android:background="@drawable/animales" />
 
                 <ImageButton
                     android:layout_width="146dp"
                     android:layout_height="231dp"
+                    android:onClick="llamar"
                     android:layout_marginLeft="20dp"
                     android:background="@drawable/mundo" />
             </LinearLayout>
