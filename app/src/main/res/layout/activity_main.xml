@@ -96,7 +96,7 @@
                 <ImageButton
                     android:layout_width="146dp"
                     android:layout_height="231dp"
-
+                    android:onClick="llamar"
                     android:layout_marginLeft="20dp"
                     android:background="@drawable/mundo" />
             </LinearLayout>
