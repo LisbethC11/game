@@ -85,27 +85,33 @@ public class quizz extends AppCompatActivity {
                     if (cont == 0) {
                         txt.setText(v[0]);
                         cont++;
+                        mostrarDialogoPersonalizado();
                     }
                     if (cont == 1) {
 
                         txt.setText(v[0]);
                         cont++;
+                        mostrarDialogoPersonalizado();
                     } else if (cont == 2) {
 
                         txt.setText(v[1]);
                         cont++;
+                        mostrarDialogoPersonalizado();
                     } else if (cont == 3) {
 
                         txt.setText(v[2]);
                         cont++;
+                        mostrarDialogoPersonalizado();
                     } else if (cont == 4) {
 
                         txt.setText(v[3]);
                         cont++;
+                        mostrarDialogoPersonalizado();
                     } else if (cont == 5) {
 
                         txt.setText(v[4]);
                         cont++;
+                        mostrarDialogoPersonalizado();
                     }
                     if (cont == 6) {
                         cont = 0;
@@ -114,6 +120,8 @@ public class quizz extends AppCompatActivity {
 
                     getWindow().getDecorView().setBackgroundColor(Color.BLUE);
                     System.out.println("pariba");
+
+                    /********PASSSSSS********/
                 } else if (x > 5 && g == 1) {
                     g++;
 
@@ -121,25 +129,32 @@ public class quizz extends AppCompatActivity {
 
                         txt.setText("pabajo: " + v[0]);
                         cont++;
+                        mostrarDialogoPersonalizado1();
                     }
                     if (cont == 1) {
 
+
                         txt.setText("pabajo1: " + v[0]);
                         cont++;
+                        mostrarDialogoPersonalizado1();
                     } else if (cont == 2) {
 
                         txt.setText("pabajo2: " + v[1]);
                         cont++;
+                        mostrarDialogoPersonalizado1();
                     } else if (cont == 3) {
 
                         txt.setText("pabajo3: " + v[2]);
                         cont++;
+                        mostrarDialogoPersonalizado1();
                     } else if (cont == 4) {
                         txt.setText("pabajo4: " + v[3]);
                         cont++;
+                        mostrarDialogoPersonalizado1();
                     } else if (cont == 5) {
                         txt.setText("pabajo5: " + v[4]);
                         cont++;
+                        mostrarDialogoPersonalizado1();
                     }
                     if (cont == 6) {
                         cont = 0;
@@ -270,7 +285,48 @@ public class quizz extends AppCompatActivity {
             public void run() {
                 dialog.dismiss();
 
-                finish();
+                //finish();
+            }
+
+
+        }, 3000);
+
+    }
+
+    private void mostrarDialogoPersonalizado1() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(quizz.this);
+
+        LayoutInflater inflater = getLayoutInflater();
+
+        View view = inflater.inflate(R.layout.correcto, null);
+
+        builder.setView(view);
+
+        //TODO BOTONES POR DEFECTO
+        /**
+         builder.setView(inflater.inflate(R.layout.dialog_personalizado,null))
+         .setPositiveButton("Reintentar", new DialogInterface.OnClickListener() {
+        @Override public void onClick(DialogInterface dialog, int which) {
+        Toast.makeText(getApplicationContext(),"Conectando...",Toast.LENGTH_SHORT).show();
+        }
+        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        @Override public void onClick(DialogInterface dialog, int which) {
+        Toast.makeText(getApplicationContext(),"Cancel",Toast.LENGTH_SHORT).show();
+        }
+        });
+         */
+
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+
+        TextView txt = view.findViewById(R.id.txt1);
+        txt.setText("PASS");
+
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                dialog.dismiss();
+
+                //finish();
             }
 
 
