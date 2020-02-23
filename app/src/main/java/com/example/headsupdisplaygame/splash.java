@@ -26,7 +26,7 @@ public class splash extends AppCompatActivity {
                 finish();
             }
 
-            ;
+
         }, Duracion_Splash);
 
     }
