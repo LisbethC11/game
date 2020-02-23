@@ -25,7 +25,7 @@ public class contador extends AppCompatActivity {
 
 
 
-        cd = new CountDownTimer(5000, 1000) {
+        cd = new CountDownTimer(6000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 t1.setText(millisUntilFinished/1000+ "");
