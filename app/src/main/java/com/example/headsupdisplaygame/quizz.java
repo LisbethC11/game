@@ -67,17 +67,14 @@ public class quizz extends AppCompatActivity {
         EmpezarJuego();
 /**********************************/
 
+
+
         sensores();
 
         cd = new CountDownTimer(60000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
-                /********************lo del sensor********************/
-
-
-
-                /******************************************/
                 t1.setText(millisUntilFinished/1000+ "");
             }
 
@@ -94,123 +91,6 @@ public class quizz extends AppCompatActivity {
         };
 
         cd.start();
-//
-//        Start();
-
-//       sensorManager = (SensorManager) getApplicationContext().getSystemService(SENSOR_SERVICE);
-//        elsensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-//        //sensorManager.registerListener(this, elsensor,sensorManager.SENSOR_DELAY_FASTEST);
-//
-//        if (elsensor == null) {
-//            Toast.makeText(this, "no tienes sensor, sorry :( ", Toast.LENGTH_LONG);
-//            finish();
-//        }
-//        sensorEventListener = new SensorEventListener() {
-//            @Override
-//            public void onSensorChanged(SensorEvent event) {
-//
-//                String[] v = {v1, v2, v3, v4, v5};
-//
-//                float x = event.values[0];
-//                System.out.println("valor de giro " + x);
-//                if (x < -5 && g == 0) {
-//
-//                    g++;
-//
-//                    if (cont == 0) {
-//                        txt.setText(v[0]);
-//                        cont++;
-//                        mostrarDialogoPersonalizado();
-//                    }
-//                    if (cont == 1) {
-//
-//                        txt.setText(v[0]);
-//                        cont++;
-//                        mostrarDialogoPersonalizado();
-//                    } else if (cont == 2) {
-//
-//                        txt.setText(v[1]);
-//                        cont++;
-//                        mostrarDialogoPersonalizado();
-//                    } else if (cont == 3) {
-//
-//                        txt.setText(v[2]);
-//                        cont++;
-//                        mostrarDialogoPersonalizado();
-//                    } else if (cont == 4) {
-//
-//                        txt.setText(v[3]);
-//                        cont++;
-//                        mostrarDialogoPersonalizado();
-//                    } else if (cont == 5) {
-//
-//                        txt.setText(v[4]);
-//                        cont++;
-//                        mostrarDialogoPersonalizado();
-//                    }
-//                    if (cont == 6) {
-//                        cont = 0;
-//                    }
-//
-//
-//                    getWindow().getDecorView().setBackgroundColor(Color.BLUE);
-//                    System.out.println("pariba");
-//
-//                    /********PASSSSSS********/
-//                } else if (x > 5 && g == 1) {
-//                    g++;
-//
-//                    if (cont == 0) {
-//
-//                        txt.setText("pabajo: " + v[0]);
-//                        cont++;
-//                        mostrarDialogoPersonalizado1();
-//                    }
-//                    if (cont == 1) {
-//
-//
-//                        txt.setText("pabajo1: " + v[0]);
-//                        cont++;
-//                        mostrarDialogoPersonalizado1();
-//                    } else if (cont == 2) {
-//
-//                        txt.setText("pabajo2: " + v[1]);
-//                        cont++;
-//                        mostrarDialogoPersonalizado1();
-//                    } else if (cont == 3) {
-//
-//                        txt.setText("pabajo3: " + v[2]);
-//                        cont++;
-//                        mostrarDialogoPersonalizado1();
-//                    } else if (cont == 4) {
-//                        txt.setText("pabajo4: " + v[3]);
-//                        cont++;
-//                        mostrarDialogoPersonalizado1();
-//                    } else if (cont == 5) {
-//                        txt.setText("pabajo5: " + v[4]);
-//                        cont++;
-//                        mostrarDialogoPersonalizado1();
-//                    }
-//                    if (cont == 6) {
-//                        cont = 0;
-//                    }
-//                    getWindow().getDecorView().setBackgroundColor(Color.RED);
-//
-//                    //txt.setText("pabajo"+g);
-//                    System.out.println("pa bajp");
-//                }
-//                if (g == 2) {
-//                    g = 0;
-//                }
-//            }
-//
-//            @Override
-//            public void onAccuracyChanged(Sensor sensor, int accuracy) {
-//
-//            }
-//        };
-
-
 
 
     }
@@ -248,7 +128,7 @@ public class quizz extends AppCompatActivity {
              @Override
              public void onSensorChanged(SensorEvent event) {
 
-                 String[] v = {v1, v2, v3, v4, v5};
+                 final String[] v = {v1, v2, v3, v4, v5};
 
                  float x = event.values[0];
                  System.out.println("valor de giro " + x);
@@ -263,9 +143,21 @@ public class quizz extends AppCompatActivity {
                      }
                      if (cont == 1) {
 
-                         txt.setText(v[0]);
-                         cont++;
-                         mostrarDialogoPersonalizado();
+                         new Handler().postDelayed(new Runnable() {
+                             public void run() {
+                                 txt.setText(v[0]);
+                                 cont++;
+                                 mostrarDialogoPersonalizado();
+
+                                 //finish();
+                             }
+
+
+                         }, 2000);
+//                         txt.setText(v[0]);
+//                         cont++;
+//                         mostrarDialogoPersonalizado();
+
                      } else if (cont == 2) {
 
                          txt.setText(v[1]);
@@ -308,14 +200,37 @@ public class quizz extends AppCompatActivity {
                      if (cont == 1) {
 
 
-                         txt.setText("pabajo1: " + v[0]);
-                         cont++;
-                         mostrarDialogoPersonalizado1();
+                         new Handler().postDelayed(new Runnable() {
+                             public void run() {
+                                 txt.setText("pabajo1 "+v[0]);
+                                 cont++;
+                                 mostrarDialogoPersonalizado();
+
+                                 //finish();
+                             }
+
+
+                         }, 2000);
+//                         txt.setText("pabajo1: " + v[0]);
+//                         cont++;
+//                         mostrarDialogoPersonalizado1();
                      } else if (cont == 2) {
 
-                         txt.setText("pabajo2: " + v[1]);
-                         cont++;
-                         mostrarDialogoPersonalizado1();
+                         new Handler().postDelayed(new Runnable() {
+                             public void run() {
+                                 txt.setText("pabajo2 "+v[1]);
+                                 cont++;
+                                 mostrarDialogoPersonalizado();
+
+                                 //finish();
+                             }
+
+
+                         }, 2000);
+
+//                         txt.setText("pabajo2: " + v[1]);
+//                         cont++;
+//                         mostrarDialogoPersonalizado1();
                      } else if (cont == 3) {
 
                          txt.setText("pabajo3: " + v[2]);
