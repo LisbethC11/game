@@ -53,6 +53,9 @@ public class quizz extends AppCompatActivity {
 
     int cont = 0;
 
+    int puntosT = 0;
+    int puntosF = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +73,8 @@ public class quizz extends AppCompatActivity {
 
 
         sensores();
+
+        /*******************cuenta regresiva************************/
 
         cd = new CountDownTimer(60000, 1000) {
             @Override
@@ -92,6 +97,7 @@ public class quizz extends AppCompatActivity {
 
         cd.start();
 
+/**************************/
 
     }
 
@@ -130,57 +136,55 @@ public class quizz extends AppCompatActivity {
 
                  final String[] v = {v1, v2, v3, v4, v5};
 
-                 float x = event.values[0];
+                 float x = event.values[2];
                  System.out.println("valor de giro " + x);
-                 if (x < -5 && g == 0) {
+                 if (x >7 && g == 0) {
 
                      g++;
 
                      if (cont == 0) {
                          txt.setText(v[0]);
                          cont++;
-                         mostrarDialogoPersonalizado();
+
                      }
                      if (cont == 1) {
 
-                         new Handler().postDelayed(new Runnable() {
-                             public void run() {
-                                 txt.setText(v[0]);
-                                 cont++;
-                                 mostrarDialogoPersonalizado();
+puntosT++;
+                         txt.setText(v[0]);
+                         cont++;
+                       mostrarDialogoPersonalizado();
 
-                                 //finish();
-                             }
-
-
-                         }, 2000);
-//                         txt.setText(v[0]);
-//                         cont++;
-//                         mostrarDialogoPersonalizado();
 
                      } else if (cont == 2) {
 
+                         puntosT++;
                          txt.setText(v[1]);
                          cont++;
                          mostrarDialogoPersonalizado();
                      } else if (cont == 3) {
+                         puntosT++;
 
                          txt.setText(v[2]);
                          cont++;
                          mostrarDialogoPersonalizado();
                      } else if (cont == 4) {
+                         puntosT++;
 
                          txt.setText(v[3]);
                          cont++;
                          mostrarDialogoPersonalizado();
                      } else if (cont == 5) {
+                         puntosT++;
 
                          txt.setText(v[4]);
                          cont++;
                          mostrarDialogoPersonalizado();
                      }
                      if (cont == 6) {
+
                          cont = 0;
+                         Intent i = new Intent (getApplicationContext(), finaly.class);
+                         startActivity(i);
                      }
 
 
@@ -188,65 +192,53 @@ public class quizz extends AppCompatActivity {
                      System.out.println("pariba");
 
                      /********PASSSSSS********/
-                 } else if (x > 5 && g == 1) {
+                 } else if (x <- 7 && g == 1) {
                      g++;
 
                      if (cont == 0) {
 
                          txt.setText("pabajo: " + v[0]);
                          cont++;
-                         mostrarDialogoPersonalizado1();
+
                      }
                      if (cont == 1) {
 
+puntosF++;
 
-                         new Handler().postDelayed(new Runnable() {
-                             public void run() {
-                                 txt.setText("pabajo1 "+v[0]);
-                                 cont++;
-                                 mostrarDialogoPersonalizado();
-
-                                 //finish();
-                             }
-
-
-                         }, 2000);
-//                         txt.setText("pabajo1: " + v[0]);
-//                         cont++;
-//                         mostrarDialogoPersonalizado1();
+                         txt.setText("pabajo1: " + v[0]);
+                         cont++;
+                         mostrarDialogoPersonalizado1("PASS");
                      } else if (cont == 2) {
 
-                         new Handler().postDelayed(new Runnable() {
-                             public void run() {
-                                 txt.setText("pabajo2 "+v[1]);
-                                 cont++;
-                                 mostrarDialogoPersonalizado();
-
-                                 //finish();
-                             }
+puntosF++;
 
 
-                         }, 2000);
-
-//                         txt.setText("pabajo2: " + v[1]);
-//                         cont++;
-//                         mostrarDialogoPersonalizado1();
+                         txt.setText("pabajo2: " + v[1]);
+                         cont++;
+                         mostrarDialogoPersonalizado1("PASS");
                      } else if (cont == 3) {
 
+                         puntosF++;
                          txt.setText("pabajo3: " + v[2]);
                          cont++;
-                         mostrarDialogoPersonalizado1();
+                         mostrarDialogoPersonalizado1("PASS");
                      } else if (cont == 4) {
                          txt.setText("pabajo4: " + v[3]);
                          cont++;
-                         mostrarDialogoPersonalizado1();
+                         puntosF++;
+                         mostrarDialogoPersonalizado1("PASS");
                      } else if (cont == 5) {
                          txt.setText("pabajo5: " + v[4]);
                          cont++;
-                         mostrarDialogoPersonalizado1();
+                         puntosF++;
+                         mostrarDialogoPersonalizado1("PASS");
                      }
                      if (cont == 6) {
                          cont = 0;
+
+
+                         Intent i = new Intent (getApplicationContext(), finaly.class);
+                         startActivity(i);
                      }
                      getWindow().getDecorView().setBackgroundColor(Color.RED);
 
@@ -360,7 +352,7 @@ public class quizz extends AppCompatActivity {
 
     }
 
-    private void mostrarDialogoPersonalizado1() {
+    private void mostrarDialogoPersonalizado1(String msm) {
         AlertDialog.Builder builder = new AlertDialog.Builder(quizz.this);
 
         LayoutInflater inflater = getLayoutInflater();
@@ -387,7 +379,7 @@ public class quizz extends AppCompatActivity {
         dialog.show();
 
         TextView txt = view.findViewById(R.id.txt1);
-        txt.setText("PASS");
+        txt.setText(msm);
 
         new Handler().postDelayed(new Runnable() {
             public void run() {
@@ -400,4 +392,6 @@ public class quizz extends AppCompatActivity {
         }, 3000);
 
     }
+
+
 }
