@@ -38,7 +38,7 @@ public class contador extends AppCompatActivity {
                 Intent i = new Intent (getApplicationContext(), quizz.class);
                 startActivity(i);
 
-                Toast.makeText(getApplicationContext(), "Listooooo!!!!",
+                Toast.makeText(getApplicationContext(), "Ready",
                         Toast.LENGTH_LONG).show();
             }
         };
