@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,6 +37,7 @@ public class quizz extends AppCompatActivity {
     SensorManager sensorManager;
     Sensor elsensor;
     SensorEventListener sensorEventListener;
+    List<Sensor> s;
 
     CountDownTimer cd;
 
@@ -44,6 +46,7 @@ public class quizz extends AppCompatActivity {
     private Retrofit retrofit;
 
     int g = 0;
+    int h = 0;
 
     String v1 = "";
     String v2 = "";
@@ -55,6 +58,15 @@ public class quizz extends AppCompatActivity {
 
     int puntosT = 0;
     int puntosF = 0;
+
+
+
+    boolean uso=false;
+
+
+    private long last_update = 0, last_movement = 0;
+    private float prevX = 0, prevY = 0, prevZ = 0;
+    private float curX = 0, curY = 0, curZ = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,9 +82,9 @@ public class quizz extends AppCompatActivity {
         EmpezarJuego();
 /**********************************/
 
+sensores();
 
-
-        sensores();
+        System.out.println("eoooooooo: "+cont);
 
         /*******************cuenta regresiva************************/
 
@@ -87,8 +99,13 @@ public class quizz extends AppCompatActivity {
             public void onFinish() {
                 // pa cuando terine se tendra que ir
 
-                Intent i = new Intent (getApplicationContext(), MainActivity.class);
+                Intent i = new Intent (getApplicationContext(), finaly.class);
+                i.putExtra("pt",puntosT);
+                i.putExtra("nameclass",getLocalClassName());
                 startActivity(i);
+
+
+
 
                 Toast.makeText(getApplicationContext(), "TERMINO!!!!",
                         Toast.LENGTH_LONG).show();
@@ -102,7 +119,7 @@ public class quizz extends AppCompatActivity {
     }
 
     private void Start() {
-        sensorManager.registerListener(sensorEventListener, elsensor, SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(sensorEventListener, elsensor, SensorManager.SENSOR_DELAY_GAME);
     }
 
     private void Stop() {
@@ -121,10 +138,12 @@ public class quizz extends AppCompatActivity {
         Start();
     }
 
-     public void sensores(){
+     private void sensores(){
          sensorManager = (SensorManager) getApplicationContext().getSystemService(SENSOR_SERVICE);
          elsensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-         //sensorManager.registerListener(this, elsensor,sensorManager.SENSOR_DELAY_FASTEST);
+//         //sensorManager.registerListener((sensorEventListener) getApplicationContext(),elsensor.get(0),SensorManager.SENSOR_DELAY_GAME);
+
+
 
          if (elsensor == null) {
              Toast.makeText(this, "no tienes sensor, sorry :( ", Toast.LENGTH_LONG);
@@ -134,129 +153,133 @@ public class quizz extends AppCompatActivity {
              @Override
              public void onSensorChanged(SensorEvent event) {
 
+                 Sensor si = event.sensor;
                  final String[] v = {v1, v2, v3, v4, v5};
+
+                 int p=0;
+
+                 long la=0;
+
 
                  float x = event.values[2];
                  System.out.println("valor de giro " + x);
-                 if (x >7 && g == 0) {
 
-                     g++;
+                 if(x>7&&g==0){
+
 
                      if (cont == 0) {
+
+                        // puntosT++;
                          txt.setText(v[0]);
                          cont++;
-
-                     }
-                     if (cont == 1) {
-
-puntosT++;
-                         txt.setText(v[0]);
-                         cont++;
-                       mostrarDialogoPersonalizado();
+                         mostrarDialogoPersonalizado1("Lest Go!!");
 
 
-                     } else if (cont == 2) {
+                     } else if (cont == 1) {
 
                          puntosT++;
                          txt.setText(v[1]);
                          cont++;
                          mostrarDialogoPersonalizado();
-                     } else if (cont == 3) {
+                     } else if (cont == 2) {
                          puntosT++;
 
                          txt.setText(v[2]);
                          cont++;
                          mostrarDialogoPersonalizado();
-                     } else if (cont == 4) {
+                     } else if (cont == 3) {
                          puntosT++;
 
                          txt.setText(v[3]);
                          cont++;
                          mostrarDialogoPersonalizado();
-                     } else if (cont == 5) {
+                     } else if (cont == 4) {
                          puntosT++;
 
                          txt.setText(v[4]);
                          cont++;
                          mostrarDialogoPersonalizado();
+                     }else if (cont == 5) {
+                         puntosT++;
+
+                         //txt.setText(v[4]);
+                         cont++;
+                         mostrarDialogoPersonalizado();
                      }
-                     if (cont == 6) {
-
-                         cont = 0;
-                         Intent i = new Intent (getApplicationContext(), finaly.class);
-                         startActivity(i);
-                     }
-
-
-                     getWindow().getDecorView().setBackgroundColor(Color.BLUE);
-                     System.out.println("pariba");
-
-                     /********PASSSSSS********/
-                 } else if (x <- 7 && g == 1) {
                      g++;
+
+                 }else if(x<3 && x>-3 && g==1 ){
+                     //txt.setText("en el medio: "+ cont);
+                     g++;
+                 }
+
+                 if(g==2){
+                     g=0;
+                 }
+                 /********************abajo*************************/
+
+                 if(x<-7&&h==0){
+
 
                      if (cont == 0) {
 
-                         txt.setText("pabajo: " + v[0]);
+//                         puntosF++;
+
+                         txt.setText( v[0]);
                          cont++;
+                         mostrarDialogoPersonalizado1("Lest Go!!");
+                     } else if (cont ==1) {
 
-                     }
-                     if (cont == 1) {
+                         puntosF++;
 
-puntosF++;
 
-                         txt.setText("pabajo1: " + v[0]);
+                         txt.setText( v[1]);
                          cont++;
                          mostrarDialogoPersonalizado1("PASS");
                      } else if (cont == 2) {
 
-puntosF++;
-
-
-                         txt.setText("pabajo2: " + v[1]);
+                         puntosF++;
+                         txt.setText( v[2]);
                          cont++;
                          mostrarDialogoPersonalizado1("PASS");
                      } else if (cont == 3) {
-
-                         puntosF++;
-                         txt.setText("pabajo3: " + v[2]);
+                         txt.setText( v[3]);
                          cont++;
+                         puntosF++;
                          mostrarDialogoPersonalizado1("PASS");
                      } else if (cont == 4) {
-                         txt.setText("pabajo4: " + v[3]);
+                         txt.setText(v[4]);
                          cont++;
                          puntosF++;
                          mostrarDialogoPersonalizado1("PASS");
                      } else if (cont == 5) {
-                         txt.setText("pabajo5: " + v[4]);
+                         //txt.setText(v[]);
                          cont++;
                          puntosF++;
                          mostrarDialogoPersonalizado1("PASS");
                      }
-                     if (cont == 6) {
-                         cont = 0;
+                     h++;
 
-
-                         Intent i = new Intent (getApplicationContext(), finaly.class);
-                         startActivity(i);
-                     }
-                     getWindow().getDecorView().setBackgroundColor(Color.RED);
-
-                     //txt.setText("pabajo"+g);
-                     System.out.println("pa bajp");
+                 }else if(x<3 && x>-3 && h==1 ){
+                     //txt.setText("en el medio: "+ cont);
+                     h++;
                  }
-                 if (g == 2) {
-                     g = 0;
+
+                 if(h==2){
+                     h=0;
                  }
              }
+
 
              @Override
              public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
              }
-         };
-         Start();
+         };Start();
 
+
+         System.out.println(puntosF);
+         System.out.println(puntosT);
      }
 
     public void EmpezarJuego() {
@@ -311,6 +334,9 @@ puntosF++;
 
     }
 
+
+
+
     private void mostrarDialogoPersonalizado() {
         AlertDialog.Builder builder = new AlertDialog.Builder(quizz.this);
 
@@ -362,18 +388,7 @@ puntosF++;
         builder.setView(view);
 
         //TODO BOTONES POR DEFECTO
-        /**
-         builder.setView(inflater.inflate(R.layout.dialog_personalizado,null))
-         .setPositiveButton("Reintentar", new DialogInterface.OnClickListener() {
-        @Override public void onClick(DialogInterface dialog, int which) {
-        Toast.makeText(getApplicationContext(),"Conectando...",Toast.LENGTH_SHORT).show();
-        }
-        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-        @Override public void onClick(DialogInterface dialog, int which) {
-        Toast.makeText(getApplicationContext(),"Cancel",Toast.LENGTH_SHORT).show();
-        }
-        });
-         */
+      
 
         final AlertDialog dialog = builder.create();
         dialog.show();
@@ -392,6 +407,7 @@ puntosF++;
         }, 3000);
 
     }
+
 
 
 }
