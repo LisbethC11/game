@@ -16,7 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".finaly"></activity>
+        <activity android:name=".quizzG"></activity>
+        <activity android:name=".quizzA" />
+        <activity android:name=".quizzC" />
+        <activity android:name=".finaly" />
         <activity android:name=".contador" />
         <activity
             android:name=".quizz"

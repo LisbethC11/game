@@ -21,7 +21,9 @@ import android.widget.Toast;
 import com.example.headsupdisplaygame.api1.Post;
 import com.example.headsupdisplaygame.api1.PostService;
 import com.example.headsupdisplaygame.api1.Result;
-import com.example.headsupdisplaygame.api3.ResultA;
+import com.example.headsupdisplaygame.api2.PostC;
+import com.example.headsupdisplaygame.api2.PostServiceC;
+import com.example.headsupdisplaygame.api2.ResultC;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +35,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-public class quizz extends AppCompatActivity {
+public class quizzC extends AppCompatActivity {
     TextView txt;
     TextView t1;
     SensorManager sensorManager;
@@ -70,7 +72,7 @@ public class quizz extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quizz);
+        setContentView(R.layout.activity_quizz_c);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         txt = (TextView) findViewById(R.id.textView7);
@@ -348,30 +350,30 @@ public class quizz extends AppCompatActivity {
                 .baseUrl("https://opentdb.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        PostService postService = retrofit.create(PostService.class);
-        Call<Post> call = postService.getPost();
-        call.enqueue(new Callback<Post>() {
+        PostServiceC postService = retrofit.create(PostServiceC.class);
+        Call<PostC> call = postService.getPost();
+        call.enqueue(new Callback<PostC>() {
             @Override
-            public void onResponse(Call<Post> call, Response<Post>
+            public void onResponse(Call<PostC> call, Response<PostC>
                     response) {
 
                 if (response.isSuccessful()) {
-                    Post p = response.body();
-                    ArrayList<Result> list = (ArrayList<Result>) p.getResults();
+                    PostC p = response.body();
+                    ArrayList<ResultC> list = (ArrayList<ResultC>) p.getResults();
 
 
                     for (int i = 0; i < list.size(); i++) {
-                        Result r = list.get(i);
-                        Result r1 = list.get(0);
-                        Result r2 = list.get(1);
-                        Result r3 = list.get(2);
-                        Result r4 = list.get(3);
-                        Result r5 = list.get(4);
-                        Result r6 = list.get(5);
-                        Result r7 = list.get(6);
-                        Result r8 = list.get(7);
-                        Result r9 = list.get(8);
-                        Result r10 = list.get(9);
+                        ResultC r = list.get(i);
+                        ResultC r1 = list.get(0);
+                        ResultC r2 = list.get(1);
+                        ResultC r3 = list.get(2);
+                        ResultC r4 = list.get(3);
+                        ResultC r5 = list.get(4);
+                        ResultC r6 = list.get(5);
+                        ResultC r7 = list.get(6);
+                        ResultC r8 = list.get(7);
+                        ResultC r9 = list.get(8);
+                        ResultC r10 = list.get(9);
 
                         System.out.println(r.getCorrect_answer());
 
@@ -396,7 +398,7 @@ public class quizz extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Post> call, Throwable t) {
+            public void onFailure(Call<PostC> call, Throwable t) {
                 txt.setText("fallo: " + t.getMessage());
             }
         });
@@ -405,7 +407,7 @@ public class quizz extends AppCompatActivity {
 
 
     private void mostrarDialogoPersonalizado() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(quizz.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(quizzC.this);
 
         LayoutInflater inflater = getLayoutInflater();
 
@@ -434,7 +436,7 @@ public class quizz extends AppCompatActivity {
     }
 
     private void mostrarDialogoPersonalizado1(String msm) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(quizz.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(quizzC.this);
 
         LayoutInflater inflater = getLayoutInflater();
 

@@ -46,7 +46,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
                     android:background="@drawable/estrella"
-                    android:onClick="llamar" />
+                    android:onClick="llamarC" />
 
             </LinearLayout>
 
@@ -57,23 +57,7 @@
                 android:layout_marginTop="36dp"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-                <ImageButton
-                    android:layout_width="150dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
-                    android:onClick="llamar"
-                    android:background="@drawable/musica" />
-
-                <ImageButton
-                    android:layout_width="149dp"
-                    android:layout_height="wrap_content"
-                    android:onClick="llamar"
-                    android:layout_marginLeft="20dp"
-                    android:background="@drawable/actuacion" />
-
-            </LinearLayout>
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout"/>
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
@@ -90,13 +74,13 @@
                     android:layout_width="141dp"
                     android:layout_height="231dp"
                     android:layout_marginLeft="20dp"
-                    android:onClick="llamar"
-                    android:background="@drawable/animales" />
+                    android:background="@drawable/animales"
+                    android:onClick="llamarA" />
 
                 <ImageButton
                     android:layout_width="146dp"
                     android:layout_height="231dp"
-                    android:onClick="llamar"
+                    android:onClick="llamarG"
                     android:layout_marginLeft="20dp"
                     android:background="@drawable/mundo" />
             </LinearLayout>
