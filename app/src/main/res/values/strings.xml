@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Heads Up Display Game</string>
+    <string name="app_name" translatable="false">Spill</string>
     <string name="botonnn" translatable="false">Boton</string>
     <string name="tema" translatable="false">Seleccione la categoria que desea.</string>
     <string name="historia" translatable="false">Historia</string>
