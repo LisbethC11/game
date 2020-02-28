@@ -9,16 +9,16 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="680dp"
-        android:layout_height="277dp"
+        android:layout_width="770dp"
+        android:layout_height="405dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginBottom="95dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginBottom="19dp"
         android:background="@drawable/ovalo"
         android:orientation="horizontal"
         android:padding="10dp"
@@ -46,17 +46,18 @@
 
         <TextView
             android:id="@+id/txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="118dp"
+            android:layout_height="110dp"
             android:text="60"
             android:textColor="@color/colorAccent"
             android:textSize="50dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.475"
+            app:layout_constraintHorizontal_bias="0.47"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView7"
+            app:layout_constraintVertical_bias="0.686"
             tools:layout_conversion_absoluteHeight="41dp"
             tools:layout_conversion_absoluteWidth="158dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
