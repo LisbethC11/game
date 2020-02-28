@@ -35,8 +35,26 @@ public class contador extends AppCompatActivity {
             public void onFinish() {
                 // pa cuando terine se tendra que ir al juego
 
-                Intent i = new Intent (getApplicationContext(), quizz.class);
-                startActivity(i);
+                 String imagen=(getIntent().getStringExtra("imagen")+"");
+
+                if(imagen.equals("celebrity")){
+                    Intent i = new Intent (getApplicationContext(), quizzC.class);
+                    startActivity(i);
+
+                }else if(imagen.equals("legend")){
+                    Intent i = new Intent (getApplicationContext(), quizz.class);
+                    startActivity(i);
+
+                }else if(imagen.equals("animal")){
+                    Intent i = new Intent (getApplicationContext(), quizzA.class);
+                    startActivity(i);
+
+                }else if(imagen.equals("geography")){
+                    Intent i = new Intent (getApplicationContext(), quizzG.class);
+                    startActivity(i);
+                }
+
+
 
                 Toast.makeText(getApplicationContext(), "Ready",
                         Toast.LENGTH_LONG).show();
